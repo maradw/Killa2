@@ -12,7 +12,7 @@ public class merekController : MonoBehaviour
     public GameManager gameManagerForMerek;
     private void Awake()
     {
-       // _comRigidbody2D = GetComponent<Rigidbody2D>();
+      
     }
     void Update()
     {
@@ -20,6 +20,7 @@ public class merekController : MonoBehaviour
         {
             FollowCharacter();
         }
+        
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -46,6 +47,14 @@ public class merekController : MonoBehaviour
         {
             followKilla = true;
             
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "follow")
+        {
+            followKilla = false;
+
         }
     }
     void FollowCharacter()

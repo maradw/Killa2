@@ -15,11 +15,14 @@ public class KillaController : MonoBehaviour
     public GameManager _gameManagerForLife;
     public GameObject _littleEnemy;
     public Image _lifeBar;
+    private SpriteRenderer _compSpriteR;
     
     void Awake()
     {
         _compTransform = GetComponent<Transform>();
         _killaRigidBody = GetComponent<Rigidbody2D>();
+
+        _compSpriteR = GetComponent<SpriteRenderer>();
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,7 +43,14 @@ public class KillaController : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
+        if (Input.GetKey(KeyCode.A))
+        {
+            _compSpriteR.flipX = true;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            _compSpriteR.flipX = false;
+        }
 
     }
     private void FixedUpdate()
